@@ -11,5 +11,7 @@ namespace DT191G_Moment4_beab2100 {
         public int Lenght { get; set; }
         [Required(ErrorMessage = "Ange en kategori")]
         public string? Category { get; set; }
+        public int RatingId { get; set; }
+        public Rating? Rating { get; set; }
     }
 }
