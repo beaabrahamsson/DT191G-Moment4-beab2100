@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DT191G_Moment4_beab2100 {
+namespace DT191G_Moment4_beab2100.Models {
     public class Song {
         public int Id { get; set; }
         [Required(ErrorMessage = "Ange en artist")]
