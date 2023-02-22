@@ -1,5 +1,6 @@
 using DT191G_Moment4_beab2100.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 

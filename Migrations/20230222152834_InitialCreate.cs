@@ -29,7 +29,7 @@ namespace DT191G_Moment4_beab2100.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Songs",
+                name: "Song",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -45,9 +45,9 @@ namespace DT191G_Moment4_beab2100.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Songs", x => x.Id);
+                    table.PrimaryKey("PK_Song", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Songs_Rating_RatingId",
+                        name: "FK_Song_Rating_RatingId",
                         column: x => x.RatingId,
                         principalTable: "Rating",
                         principalColumn: "RatingId",
@@ -56,8 +56,8 @@ namespace DT191G_Moment4_beab2100.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Songs_RatingId",
-                table: "Songs",
+                name: "IX_Song_RatingId",
+                table: "Song",
                 column: "RatingId");
         }
 
@@ -65,7 +65,7 @@ namespace DT191G_Moment4_beab2100.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Songs");
+                name: "Song");
 
             migrationBuilder.DropTable(
                 name: "Rating");

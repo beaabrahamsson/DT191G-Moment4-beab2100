@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DT191G_Moment4_beab2100.Migrations
 {
     [DbContext(typeof(SongContext))]
-    [Migration("20230214160136_InitialCreate")]
+    [Migration("20230222152834_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,7 +34,7 @@ namespace DT191G_Moment4_beab2100.Migrations
 
                     b.HasKey("RatingId");
 
-                    b.ToTable("Rating");
+                    b.ToTable("Rating", (string)null);
                 });
 
             modelBuilder.Entity("DT191G_Moment4_beab2100.Models.Song", b =>
@@ -65,23 +65,18 @@ namespace DT191G_Moment4_beab2100.Migrations
 
                     b.HasIndex("RatingId");
 
-                    b.ToTable("Songs");
+                    b.ToTable("Song", (string)null);
                 });
 
             modelBuilder.Entity("DT191G_Moment4_beab2100.Models.Song", b =>
                 {
-                    b.HasOne("DT191G_Moment4_beab2100.Models.Rating", "Rating")
-                        .WithMany("Song")
+                    b.HasOne("DT191G_Moment4_beab2100.Models.Rating", "RatingNumber")
+                        .WithMany()
                         .HasForeignKey("RatingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Rating");
-                });
-
-            modelBuilder.Entity("DT191G_Moment4_beab2100.Models.Rating", b =>
-                {
-                    b.Navigation("Song");
+                    b.Navigation("RatingNumber");
                 });
 #pragma warning restore 612, 618
         }

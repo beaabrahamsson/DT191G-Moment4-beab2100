@@ -29,7 +29,10 @@ namespace DT191G_Moment4_beab2100.Controllers
           {
               return NotFound();
           }
-            return await _context.Songs.ToListAsync();
+
+        //include rating
+        return await _context.Songs.Include(e => e.RatingNumber).ToListAsync();
+
         }
 
         // GET: api/Song/5
@@ -40,7 +43,10 @@ namespace DT191G_Moment4_beab2100.Controllers
           {
               return NotFound();
           }
-            var song = await _context.Songs.FindAsync(id);
+            //include rating
+            var song = await _context.Songs.Include(s => s.RatingNumber)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(m => m.Id == id);
 
             if (song == null)
             {
@@ -51,7 +57,6 @@ namespace DT191G_Moment4_beab2100.Controllers
         }
 
         // PUT: api/Song/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSong(int id, Song song)
         {
@@ -82,7 +87,6 @@ namespace DT191G_Moment4_beab2100.Controllers
         }
 
         // POST: api/Song
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Song>> PostSong(Song song)
         {
